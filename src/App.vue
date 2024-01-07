@@ -1,19 +1,27 @@
 
 
 <script lang="ts">
-import { defineComponent, h } from "vue";
+import { defineComponent } from "vue";
 
 import data from "./data.json";
-import { renderer, type FormDesignerData } from './renderer'
+import { useRenderer, type FormDesignerData } from './renderer'
+import { VCard, VBtn } from 'vuetify/components'
 
 export default defineComponent({
+  components: {
+    VCard,
+    VBtn
+  },
   setup() {
-    // return () => renderer(data as FormDesignerData)
-    return () => h('v-card', { title: 'card title', text: 'sdsf'})
+    const { renderer } = useRenderer()
+    return () => renderer(data as unknown as FormDesignerData)
   },
 });
 </script>
 <style>
+#app {
+  height: 100vh;
+}
 .outer {
   width: 200px;
   height: 200px;
