@@ -1,0 +1,20 @@
+{
+  "type": "VCard",
+  "props": { 
+    "key": "root",
+    "title": "Card Title",
+    "subtitle": "Subtitle",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!"
+  },
+  "children": [
+    {
+      "type": "v-card-actions",
+      "children": [
+        {
+          "type": "v-btn",
+          "children": "Click me"
+        }
+      ]
+    }
+  ]
+}
