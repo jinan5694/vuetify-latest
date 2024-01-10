@@ -4,7 +4,6 @@ import { camelCase, upperFirst } from 'lodash-es'
 export type FormDesignerData = {
   type: string
   props: {
-    key?: string
     [key : string]: any
   }
   children: FormDesignerData[] | string
@@ -16,7 +15,7 @@ export function useRenderer() {
   const components = instance?.appContext.components ?? {}
 
   function renderer(data: FormDesignerData): VNode {
-    const { type, props, children } = data
+    const { type, props = {}, children = [] } = data
     
     // 根据配置的组件名称，找到对应的组件定义
     let component: Component | string
@@ -28,8 +27,14 @@ export function useRenderer() {
     } else {
       component = type
     }
+
+    // 事件处理
+    if (Object.keys(props).includes('onClick')) {
+      const funcStr = props['onClick']
+      props['onClick'] = new Function(`return (${funcStr})`)(instance)
+    }
     
-    let defaultSlot: (() => string) | (() => VNode[])
+    let defaultSlot: () => string | VNode[]
     if (typeof children === 'string') {
       defaultSlot = () => children
     } else {

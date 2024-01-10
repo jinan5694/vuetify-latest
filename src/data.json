@@ -5,6 +5,7 @@
     "title": "Card Title",
     "subtitle": "Subtitle",
     "class": "ma-4",
+    "color": "primary",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!"
   },
   "children": [
@@ -13,7 +14,17 @@
       "children": [
         {
           "type": "v-btn",
+          "props": {
+            "onClick": "(e) => { console.log(e); debugger }"
+          },
           "children": "Click me"
+        },
+        {
+          "type": "v-btn",
+          "props": {
+            "onClick": "(e) => { console.log(e); debugger }"
+          },
+          "children": "Click me2"
         }
       ]
     }
